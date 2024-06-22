@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agent Details - PETS SHORE{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin-styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+            padding: 15px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffc107;
+        }
+        .navbar-nav .nav-link {
+            color: #f8f9fa;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107;
+        }
+        .sidebar {
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            background-color: #343a40;
+            padding-top: 20px;
+            transition: transform 0.3s ease;
+            z-index: 1; 
+        }
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #ffc107;
+        }
+        .sidebar .active {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 260px; 
+            padding: 20px;
+            position: relative; 
+            z-index: 0; 
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .content {
+                margin-left: 0; 
+                padding: 20px;
+            }
+        }
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .agent-details {
+            margin-bottom: 20px;
+        }
+        .agent-details h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .agent-details p {
+            margin-bottom: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">PETS SHORE</a>
+            <button class="navbar-toggler" type="button" onclick="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin_dashboard' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <a class="active" href="{% url 'home' %}">PETS SHORE</a>
+        <hr>
+        <a href="#">Profile</a>
+        <hr>
+        <a href="{% url 'add_agent' %}">Add Agent</a>
+        <a href="{% url 'view_agent' agent.id %}">Agent Details</a>
+    </div>
+
+    <div class="content">
+        <div class="agent-details">
+            <h2>Agent Details</h2>
+            <p><strong>Name:</strong> {{ agent.name }}</p>
+            <p><strong>Qualification:</strong> {{ agent.qualification }}</p>
+            <p><strong>Address:</strong> {{ agent.address }}</p>
+            <p><strong>Phone:</strong> {{ agent.phone }}</p>
+            <p><strong>Email:</strong> {{ agent.email }}</p>
+        </div>
+        <a href="{% url 'edit_agent' agent.id %}" class="back-link">Edit Agent</a>
+        <a href="{% url 'delete_agent' agent.id %}" class="back-link">Delete Agent</a>
+                                        
+        <a href="{% url 'admin_dashboard' %}" class="back-link">Back to Dashboard</a>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

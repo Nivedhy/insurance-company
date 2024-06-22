@@ -1,0 +1,92 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Insurance CRM{% endblock %}</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Additional CSS styles -->
+    <style>
+        /* Customize your additional styles here */
+        body {
+            padding-top: 4.5rem; /* Adjust based on navbar height */
+        }
+        .jumbotron {
+            background-color: #f8f9fa; /* Light background color for jumbotron */
+            padding: 2rem 1rem; /* Padding inside jumbotron */
+        }
+        footer {
+            margin-top: 3rem; /* Margin top for footer */
+            text-align: center; /* Center align text in footer */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Insurance CRM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+               
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'agent_dashboard' %}">Agent</a>
+                    </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_dashboard' %}">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main">
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1 class="display-4">Welcome to Insurance CRM</h1>
+                <p class="lead">Manage your insurance operations efficiently with our comprehensive CRM solution.</p>
+                <hr class="my-4">
+                <p>Our platform empowers agents and administrators to streamline customer management and policy handling.</p>
+                <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>About Us</h2>
+                    <p>We are dedicated to providing the best CRM solution tailored for insurance companies.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Learn more »</a></p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or inquiries, please feel free to contact us.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Contact »</a></p>
+                </div>
+            </div>
+        
+            <hr>
+        
+            <footer class="text-muted text-center">
+                <p>&copy; 2024 Insurance CRM. All rights reserved.</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS and additional JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js" integrity="sha384-axzYefz0f43PppkLrGTy5RHDYPYwnbgKlHb3+68aLZizvoDZ0p+Y2J6q6GfFOyC" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+2QpZr+38L3kmC2zxyIV6F5FshhXbMITAoJ" crossorigin="anonymous"></script>
+</body>
+</html>

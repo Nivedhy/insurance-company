@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Delete Customer - Insurance CRM{% endblock %}</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Additional CSS styles -->
+    <style>
+        body {
+            padding-top: 4.5rem; /* Adjust based on navbar height */
+            background-color: #f0f2f5;
+        }
+        .card {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .btn-custom {
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="{% url 'home' %}">Insurance CRM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Agent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_customer' %}">Add Customer</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_customer' %}">Customer Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+    
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title text-danger">Delete Customer</h2>
+            <p>Are you sure you want to delete the following customer?</p>
+            <div class="customer-detail"><strong>Name:</strong> {{ customer.name }}</div>
+            <div class="customer-detail"><strong>Date of Birth:</strong> {{ customer.date_of_birth }}</div>
+            <div class="customer-detail"><strong>Phone:</strong> {{ customer.phone }}</div>
+            <div class="customer-detail"><strong>Address:</strong> {{ customer.address }}</div>
+            <form action="{% url 'delete_customer' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-custom">Delete</button>
+                <a href="{% url 'view_customer' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <footer class="text-muted">
+        <p>&copy; 2024 Insurance CRM. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and additional JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js" integrity="sha384-axzYefz0f43PppkLrGTy5RHDYPYwnbgKlHb3+68aLZizvoDZ0p+Y2J6q6GfFOyC" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+2QpZr+38L3kmC2zxyIV6F5FshhXbMITAoJ" crossorigin="anonymous"></script>
+</body>
+</html>

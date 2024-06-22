@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent Locations</title>
+</head>
+<body>
+    <h1>Locations for {{ agent.name }}</h1>
+    <ul>
+        {% for location in locations %}
+        <li>{{ location.date }}: ({{ location.latitude }}, {{ location.longitude }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'view_agent' %}">Back to Agents</a>
+</body>
+</html>

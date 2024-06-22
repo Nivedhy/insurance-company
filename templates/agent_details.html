@@ -1,0 +1,17 @@
+<!-- templates/agent_details.html -->
+{% extends 'admin_dashboard.html' %}
+
+{% block title %}Agent Details{% endblock %}
+
+{% block content %}
+<h1>Agent Details</h1>
+<p><strong>Name:</strong> {{ agent.first_name }} {{ agent.last_name }}</p>
+<p><strong>Age:</strong> {{ agent.age }}</p>
+<p><strong>Qualification:</strong> {{ agent.qualification }}</p>
+<p><strong>Phone:</strong> {{ agent.phone }}</p>
+<p><strong>Email:</strong> {{ agent.email }}</p>
+<p><strong>Place:</strong> {{ agent.place }}</p>
+<!-- Add other fields as needed -->
+
+<a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+{% endblock %}
